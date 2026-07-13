@@ -1,0 +1,518 @@
+/* ===================================
+   EXCEL & HR LEARNING HUB
+   Stylesheet
+=================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f7fa;
+    color: #333;
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar {
+    padding: 15px 0;
+}
+
+.navbar-brand {
+    font-size: 24px;
+}
+
+.nav-link {
+    font-weight: 500;
+    margin-left: 15px;
+}
+
+.nav-link:hover {
+    color: #ffc107 !important;
+}
+
+/* ================= HERO ================= */
+
+.hero {
+    background: linear-gradient(135deg, #198754, #0d6efd);
+    color: white;
+    padding: 80px 0;
+}
+
+.hero h1 {
+    font-size: 55px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 20px;
+    line-height: 1.8;
+}
+
+.hero-image {
+    width: 100%;
+    max-width: 550px;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, .3);
+}
+
+.hero.hero-sm {
+    padding: 50px 0;
+}
+
+.hero.hero-sm h1 {
+    font-size: 40px;
+}
+
+/* ================= BUTTONS ================= */
+
+.btn {
+    border-radius: 30px;
+    padding: 12px 28px;
+    transition: .3s;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+}
+
+.btn-sm {
+    padding: 8px 18px;
+}
+
+/* ================= SEARCH ================= */
+
+.search-box {
+    display: flex;
+    background: white;
+    border-radius: 50px;
+    overflow: hidden;
+    max-width: 500px;
+}
+
+.search-box input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 15px;
+    font-size: 16px;
+}
+
+.search-box button {
+    width: 70px;
+    border: none;
+    background: #198754;
+    color: white;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.search-box button:hover {
+    background: #145c32;
+}
+
+/* ================= STATS ================= */
+
+.stats {
+    display: flex;
+    gap: 50px;
+    margin-top: 40px;
+}
+
+.stats h2 {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.stats p {
+    margin-top: -5px;
+}
+
+/* ================= SECTION TITLE ================= */
+
+section h2 {
+    font-weight: bold;
+}
+
+/* ================= FEATURE CARD ================= */
+
+.feature-card {
+    background: white;
+    padding: 35px;
+    border-radius: 20px;
+    text-align: center;
+    height: 100%;
+    transition: .4s;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, .08);
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, .15);
+}
+
+.feature-card i {
+    margin-bottom: 20px;
+}
+
+.feature-card h3 {
+    font-size: 24px;
+    margin-top: 20px;
+    color: #198754;
+}
+
+.feature-card p {
+    margin-top: 15px;
+    color: #666;
+}
+
+/* ================= FORMULA CARD ================= */
+
+.formula-card {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    transition: .3s;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, .08);
+    height: 100%;
+    cursor: pointer;
+    border: none;
+    width: 100%;
+    display: block;
+}
+
+.formula-card:hover {
+    transform: translateY(-8px);
+}
+
+.formula-card h4 {
+    color: #198754;
+    font-weight: bold;
+}
+
+/* ================= ABOUT / LIGHT SECTION ================= */
+
+.bg-light {
+    background: #eef3f7 !important;
+}
+
+/* ================= FOOTER ================= */
+
+footer {
+    background: #212529;
+    margin-top: 70px;
+}
+
+footer a {
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #ffc107 !important;
+    text-decoration: underline;
+}
+
+/* ================= IMAGE ================= */
+
+img {
+    max-width: 100%;
+}
+
+/* ================= ANIMATION ================= */
+
+.feature-card,
+.formula-card,
+.hero-image {
+    animation: fadeUp 0.6s ease;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .feature-card, .formula-card, .hero-image { animation: none; }
+}
+
+/* ================= SIDEBAR ================= */
+
+.sidebar {
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, .08);
+    position: sticky;
+    top: 90px;
+}
+
+.sidebar h6 {
+    color: #198754;
+    margin-bottom: 12px;
+    font-weight: bold;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 22px;
+}
+
+.sidebar li { padding: 2px 0; }
+
+.sidebar a {
+    display: block;
+    padding: 6px 10px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    font-size: 14.5px;
+    transition: .2s;
+}
+
+.sidebar a:hover {
+    background: #198754;
+    color: #fff;
+    padding-left: 16px;
+}
+
+.sidebar a.active {
+    background: #198754;
+    color: #fff;
+    font-weight: 600;
+}
+
+/* ================= BREADCRUMB ================= */
+
+.breadcrumb {
+    background: #ffffff;
+    padding: 12px 20px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, .08);
+}
+
+.breadcrumb a {
+    text-decoration: none;
+    color: #198754;
+    font-weight: 600;
+}
+
+.breadcrumb-item.active {
+    color: #666;
+}
+
+/* ================= PROGRESS BAR ================= */
+
+#progressBar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 4px;
+    width: 0;
+    background: #ffc107;
+    z-index: 9999;
+    transition: .1s;
+}
+
+/* ================= BACK TO TOP ================= */
+
+#topBtn {
+    display: none;
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    background: #198754;
+    color: #fff;
+    font-size: 22px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .25);
+    z-index: 9999;
+    transition: .3s;
+}
+
+#topBtn:hover {
+    transform: translateY(-5px);
+    background: #146c43;
+}
+
+/* ================= FORMULA SEARCH RESULTS ================= */
+
+.match-list {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, .08);
+    overflow: hidden;
+}
+
+.match-list button {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    border-bottom: 1px solid #eee;
+    padding: 16px 20px;
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    cursor: pointer;
+}
+
+.match-list button:last-child { border-bottom: none; }
+
+.match-list button:hover { background: #f3faf5; }
+
+.match-list .m-formula {
+    font-weight: 700;
+    color: #198754;
+    min-width: 130px;
+    font-family: "Courier New", monospace;
+}
+
+.match-list .m-description {
+    color: #555;
+    font-size: 14.5px;
+}
+
+/* ================= FORMULA DETAIL ================= */
+
+.level-badge {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    padding: 4px 10px;
+    border-radius: 999px;
+}
+
+.level-badge.level-beginner { background: #d7f2e3; color: #198754; }
+.level-badge.level-intermediate { background: #dbe8fb; color: #0d6efd; }
+.level-badge.level-advanced { background: #ece2f8; color: #6f42c1; }
+.category-badge {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: #eef1f0;
+    color: #555;
+}
+
+.syntax-box {
+    background: #f8f9fa;
+    border: 1px solid #e2e5e0;
+    border-radius: 12px;
+    padding: 14px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 14px;
+    margin: 18px 0 28px;
+    flex-wrap: wrap;
+}
+
+.syntax-box code {
+    font-size: 16px;
+    font-weight: 600;
+    color: #198754;
+    overflow-x: auto;
+}
+
+.arg-table th {
+    background: #198754;
+    color: #fff;
+    width: 190px;
+}
+
+.example-block {
+    background: #eafaf0;
+    border: 1px solid #cdeedb;
+    border-left: 4px solid #198754;
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin-bottom: 14px;
+}
+
+.example-block code {
+    display: block;
+    color: #146c43;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.mistake-block {
+    background: #fff8ec;
+    border: 1px solid #f3e3bf;
+    border-left: 4px solid #ffc107;
+    border-radius: 10px;
+    padding: 14px 18px;
+}
+
+.related-pill {
+    display: inline-block;
+    font-family: "Courier New", monospace;
+    font-weight: 600;
+    font-size: 13.5px;
+    padding: 6px 14px;
+    margin: 0 8px 8px 0;
+    border-radius: 999px;
+    border: 1px solid #ddd;
+    background: #fff;
+    color: #198754;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.related-pill:hover {
+    background: #198754;
+    color: #fff;
+}
+
+.no-match-box {
+    background: #fff;
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    color: #777;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, .08);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 991px) {
+    .hero { text-align: center; }
+    .hero h1 { font-size: 40px; }
+    .stats { justify-content: center; }
+    .search-box { margin: auto; }
+    .sidebar { position: static; margin-bottom: 24px; }
+}
+
+@media (max-width: 768px) {
+    .hero { padding: 60px 20px; }
+    .hero h1 { font-size: 32px; }
+    .stats { flex-direction: column; gap: 20px; text-align: center; }
+    .navbar-brand { font-size: 20px; }
+    .arg-table th { width: auto; }
+}
