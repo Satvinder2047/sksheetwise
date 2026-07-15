@@ -3292,4 +3292,12 @@
     ],
     "hasPractice": false
   }
+{
+  "formula": "SUMIFS",
+  "category": "Math",
+  "level": "Intermediate",
+  "syntax": "=SUMIFS(...)",
+  ...
+  "downloadLink": "data/downloads/sumifs_payroll_practice.xlsx"
+}
 ]
