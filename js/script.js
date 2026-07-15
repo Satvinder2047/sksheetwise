@@ -243,6 +243,15 @@ function showFormulaDetail(formulaName) {
       </table>`
     : "";
 
+  const stepsHtml = (entry.steps || []).length
+    ? `<h2 class="mt-4">Step by Step</h2><ol class="step-list">${entry.steps.map((s) => `<li>${escapeHtml(s)}</li>`).join("")}</ol>`
+    : "";
+
+  const whyUseHtml = entry.whyUse
+    ? `<h2 class="mt-4">Why & When to Use It</h2><p>${escapeHtml(entry.whyUse)}</p>`
+    : "";
+
+
   const examplesHtml = (entry.examples || [])
     .map((ex) => `<div class="example-block"><code>${escapeHtml(ex.formula)}</code><p class="mb-0">${escapeHtml(ex.explanation)}</p></div>`)
     .join("");
@@ -287,10 +296,16 @@ function showFormulaDetail(formulaName) {
     <h2>Description</h2>
     <p>${escapeHtml(entry.description)}</p>
 
+    ${whyUseHtml}
+
     ${argTable ? `<h2 class="mt-4">Arguments</h2>${argTable}` : ""}
+
+    ${stepsHtml}
 
     <h2 class="mt-5">Examples</h2>
     ${examplesHtml}
+
+    ${entry.hasPractice ? `<h2 class="mt-5">🧪 Practice It Yourself</h2><div id="practiceMount"></div>` : ""}
 
     ${hrUsesHtml}
     ${mistakesHtml}
@@ -303,6 +318,8 @@ function showFormulaDetail(formulaName) {
   detail.hidden = false;
   window.scrollTo({ top: 0, behavior: "smooth" });
   history.replaceState(null, "", `excel.html#${entry.formula}`);
+
+  if (entry.hasPractice) mountPractice(entry.formula);
 
   const copyBtn = document.getElementById("copySyntaxBtn");
   if (copyBtn) {
@@ -320,6 +337,336 @@ function showFormulaDetail(formulaName) {
     const el = document.getElementById(id);
     if (el) el.addEventListener("click", (e) => { e.preventDefault(); showFormulaHome(); });
   });
+}
+
+// =======================================
+// Practice widgets — real, live-calculating
+// mini spreadsheets for the most-searched formulas
+// =======================================
+
+function cellInput(value, width) {
+  const input = document.createElement("input");
+  input.type = "text";
+  input.className = "practice-cell";
+  input.value = value;
+  if (width) input.style.width = width;
+  return input;
+}
+
+function practiceWrap(instructions, tableEl, resultLabel, resultEl) {
+  const wrap = document.createElement("div");
+  wrap.className = "practice-widget";
+  const p = document.createElement("p");
+  p.className = "practice-instructions";
+  p.textContent = instructions;
+  wrap.appendChild(p);
+  wrap.appendChild(tableEl);
+  const resultBox = document.createElement("div");
+  resultBox.className = "practice-result";
+  resultBox.innerHTML = `<span class="practice-result-label">${resultLabel}</span>`;
+  resultBox.appendChild(resultEl);
+  wrap.appendChild(resultBox);
+  return wrap;
+}
+
+function buildIfPractice(mount) {
+  const table = document.createElement("table");
+  table.className = "table table-bordered practice-table";
+  table.innerHTML = `<thead><tr><th>Student</th><th>Marks</th><th>Result</th></tr></thead>`;
+  const tbody = document.createElement("tbody");
+  const students = ["Amit", "Priya", "Rahul"];
+  const marksInputs = [];
+  const resultCells = [];
+  students.forEach((name, i) => {
+    const tr = document.createElement("tr");
+    const tdName = document.createElement("td");
+    tdName.textContent = name;
+    const tdMarks = document.createElement("td");
+    const input = cellInput([72, 28, 55][i], "70px");
+    marksInputs.push(input);
+    tdMarks.appendChild(input);
+    const tdResult = document.createElement("td");
+    tdResult.className = "fw-bold";
+    resultCells.push(tdResult);
+    tr.append(tdName, tdMarks, tdResult);
+    tbody.appendChild(tr);
+  });
+  table.appendChild(tbody);
+
+  const formulaLine = document.createElement("div");
+  formulaLine.className = "practice-formula-line";
+
+  function recalc() {
+    marksInputs.forEach((input, i) => {
+      const val = Number(input.value);
+      const pass = !isNaN(val) && val >= 35;
+      resultCells[i].textContent = pass ? "Pass" : "Fail";
+      resultCells[i].style.color = pass ? "#198754" : "#c0392b";
+    });
+    formulaLine.textContent = `=IF(marks>=35,"Pass","Fail")`;
+  }
+  marksInputs.forEach((input) => input.addEventListener("input", recalc));
+  recalc();
+
+  const wrap = document.createElement("div");
+  wrap.className = "practice-widget";
+  wrap.innerHTML = `<p class="practice-instructions">Edit the marks — watch the Result column update live using =IF(marks>=35,"Pass","Fail").</p>`;
+  wrap.appendChild(table);
+  mount.appendChild(wrap);
+}
+
+function buildSumPractice(mount) {
+  const rows = ["Travel", "Meals", "Supplies", "Software"];
+  const table = document.createElement("table");
+  table.className = "table table-bordered practice-table";
+  table.innerHTML = `<thead><tr><th>Expense</th><th>Amount</th></tr></thead>`;
+  const tbody = document.createElement("tbody");
+  const inputs = [];
+  const defaults = [1200, 450, 300, 850];
+  rows.forEach((label, i) => {
+    const tr = document.createElement("tr");
+    const td1 = document.createElement("td");
+    td1.textContent = label;
+    const td2 = document.createElement("td");
+    const input = cellInput(defaults[i], "90px");
+    inputs.push(input);
+    td2.appendChild(input);
+    tr.append(td1, td2);
+    tbody.appendChild(tr);
+  });
+  table.appendChild(tbody);
+
+  const resultEl = document.createElement("span");
+  resultEl.className = "practice-result-value";
+
+  function recalc() {
+    const total = inputs.reduce((sum, inp) => sum + (Number(inp.value) || 0), 0);
+    resultEl.textContent = `=SUM(range) → ${total.toLocaleString()}`;
+  }
+  inputs.forEach((inp) => inp.addEventListener("input", recalc));
+  recalc();
+
+  mount.appendChild(practiceWrap(
+    "Edit any amount — the total recalculates live using =SUM(range).",
+    table, "", resultEl
+  ));
+}
+
+function buildAveragePractice(mount) {
+  const rows = ["Week 1", "Week 2", "Week 3", "Week 4"];
+  const table = document.createElement("table");
+  table.className = "table table-bordered practice-table";
+  table.innerHTML = `<thead><tr><th>Week</th><th>Hours worked</th></tr></thead>`;
+  const tbody = document.createElement("tbody");
+  const inputs = [];
+  const defaults = [38, 41, 36, 40];
+  rows.forEach((label, i) => {
+    const tr = document.createElement("tr");
+    const td1 = document.createElement("td");
+    td1.textContent = label;
+    const td2 = document.createElement("td");
+    const input = cellInput(defaults[i], "80px");
+    inputs.push(input);
+    td2.appendChild(input);
+    tr.append(td1, td2);
+    tbody.appendChild(tr);
+  });
+  table.appendChild(tbody);
+
+  const resultEl = document.createElement("span");
+  resultEl.className = "practice-result-value";
+
+  function recalc() {
+    const vals = inputs.map((inp) => Number(inp.value)).filter((v) => !isNaN(v));
+    const avg = vals.length ? vals.reduce((a, b) => a + b, 0) / vals.length : 0;
+    resultEl.textContent = `=AVERAGE(range) → ${avg.toFixed(1)}`;
+  }
+  inputs.forEach((inp) => inp.addEventListener("input", recalc));
+  recalc();
+
+  mount.appendChild(practiceWrap(
+    "Edit any week's hours — the average recalculates live using =AVERAGE(range).",
+    table, "", resultEl
+  ));
+}
+
+function buildCountifPractice(mount) {
+  const table = document.createElement("table");
+  table.className = "table table-bordered practice-table";
+  table.innerHTML = `<thead><tr><th>Employee</th><th>Department</th></tr></thead>`;
+  const tbody = document.createElement("tbody");
+  const names = ["Amit", "Priya", "Rahul", "Sana", "Divya"];
+  const defaults = ["Sales", "HR", "Sales", "IT", "Sales"];
+  const inputs = [];
+  names.forEach((name, i) => {
+    const tr = document.createElement("tr");
+    const td1 = document.createElement("td");
+    td1.textContent = name;
+    const td2 = document.createElement("td");
+    const input = cellInput(defaults[i], "100px");
+    inputs.push(input);
+    td2.appendChild(input);
+    tr.append(td1, td2);
+    tbody.appendChild(tr);
+  });
+  table.appendChild(tbody);
+
+  const criteriaRow = document.createElement("div");
+  criteriaRow.className = "practice-criteria-row";
+  const criteriaInput = cellInput("Sales", "120px");
+  criteriaRow.innerHTML = `<label class="me-2">Count how many equal:</label>`;
+  criteriaRow.appendChild(criteriaInput);
+
+  const resultEl = document.createElement("span");
+  resultEl.className = "practice-result-value";
+
+  function recalc() {
+    const q = criteriaInput.value.trim().toLowerCase();
+    const count = inputs.filter((inp) => inp.value.trim().toLowerCase() === q).length;
+    resultEl.textContent = `=COUNTIF(range,"${criteriaInput.value}") → ${count}`;
+  }
+  inputs.forEach((inp) => inp.addEventListener("input", recalc));
+  criteriaInput.addEventListener("input", recalc);
+  recalc();
+
+  const wrap = practiceWrap(
+    "Edit departments, or change the criteria below — the count updates live.",
+    table, "", resultEl
+  );
+  wrap.insertBefore(criteriaRow, wrap.querySelector(".practice-result"));
+  mount.appendChild(wrap);
+}
+
+function buildVlookupPractice(mount, useXlookupLabel) {
+  const table = document.createElement("table");
+  table.className = "table table-bordered practice-table";
+  table.innerHTML = `<thead><tr><th>ID</th><th>Name</th><th>Department</th></tr></thead>`;
+  const tbody = document.createElement("tbody");
+  const data = [
+    ["A101", "Amit", "Sales"],
+    ["A102", "Priya", "HR"],
+    ["A103", "Rahul", "IT"],
+  ];
+  const rowsInputs = [];
+  data.forEach((row) => {
+    const tr = document.createElement("tr");
+    const rowInputs = row.map((val, i) => {
+      const td = document.createElement("td");
+      const input = cellInput(val, i === 0 ? "70px" : "90px");
+      td.appendChild(input);
+      tr.appendChild(td);
+      return input;
+    });
+    rowsInputs.push(rowInputs);
+    tbody.appendChild(tr);
+  });
+  table.appendChild(tbody);
+
+  const criteriaRow = document.createElement("div");
+  criteriaRow.className = "practice-criteria-row";
+  const lookupInput = cellInput("A102", "90px");
+  criteriaRow.innerHTML = `<label class="me-2">Look up ID:</label>`;
+  criteriaRow.appendChild(lookupInput);
+
+  const resultEl = document.createElement("span");
+  resultEl.className = "practice-result-value";
+
+  function recalc() {
+    const q = lookupInput.value.trim().toLowerCase();
+    const match = rowsInputs.find((r) => r[0].value.trim().toLowerCase() === q);
+    const fnName = useXlookupLabel ? "XLOOKUP" : "VLOOKUP";
+    resultEl.textContent = match
+      ? `=${fnName}(...) → ${match[2].value}`
+      : `=${fnName}(...) → Not found`;
+  }
+  rowsInputs.flat().forEach((inp) => inp.addEventListener("input", recalc));
+  lookupInput.addEventListener("input", recalc);
+  recalc();
+
+  const wrap = practiceWrap(
+    "Edit the table, or change the ID you're looking up — the result updates live.",
+    table, "", resultEl
+  );
+  wrap.insertBefore(criteriaRow, wrap.querySelector(".practice-result"));
+  mount.appendChild(wrap);
+}
+
+function buildSumifsPractice(mount) {
+  const table = document.createElement("table");
+  table.className = "table table-bordered practice-table";
+  table.innerHTML = `<thead><tr><th>Region</th><th>Month</th><th>Amount</th></tr></thead>`;
+  const tbody = document.createElement("tbody");
+  const data = [
+    ["West", "Jan", 4200],
+    ["East", "Jan", 3100],
+    ["West", "Feb", 5000],
+    ["West", "Jan", 1800],
+  ];
+  const rowsInputs = [];
+  data.forEach((row) => {
+    const tr = document.createElement("tr");
+    const rowInputs = row.map((val, i) => {
+      const td = document.createElement("td");
+      const input = cellInput(val, i === 2 ? "80px" : "80px");
+      td.appendChild(input);
+      tr.appendChild(td);
+      return input;
+    });
+    rowsInputs.push(rowInputs);
+    tbody.appendChild(tr);
+  });
+  table.appendChild(tbody);
+
+  const criteriaRow = document.createElement("div");
+  criteriaRow.className = "practice-criteria-row";
+  const regionInput = cellInput("West", "80px");
+  const monthInput = cellInput("Jan", "70px");
+  criteriaRow.innerHTML = `<label class="me-2">Region equals:</label>`;
+  criteriaRow.appendChild(regionInput);
+  const monthLabel = document.createElement("label");
+  monthLabel.className = "ms-3 me-2";
+  monthLabel.textContent = "and Month equals:";
+  criteriaRow.appendChild(monthLabel);
+  criteriaRow.appendChild(monthInput);
+
+  const resultEl = document.createElement("span");
+  resultEl.className = "practice-result-value";
+
+  function recalc() {
+    const r = regionInput.value.trim().toLowerCase();
+    const m = monthInput.value.trim().toLowerCase();
+    const total = rowsInputs
+      .filter((row) => row[0].value.trim().toLowerCase() === r && row[1].value.trim().toLowerCase() === m)
+      .reduce((sum, row) => sum + (Number(row[2].value) || 0), 0);
+    resultEl.textContent = `=SUMIFS(Amount, Region,"${regionInput.value}", Month,"${monthInput.value}") → ${total.toLocaleString()}`;
+  }
+  rowsInputs.flat().forEach((inp) => inp.addEventListener("input", recalc));
+  [regionInput, monthInput].forEach((inp) => inp.addEventListener("input", recalc));
+  recalc();
+
+  const wrap = practiceWrap(
+    "Edit the table or the two conditions below — the total updates live.",
+    table, "", resultEl
+  );
+  wrap.insertBefore(criteriaRow, wrap.querySelector(".practice-result"));
+  mount.appendChild(wrap);
+}
+
+const PRACTICE_BUILDERS = {
+  IF: buildIfPractice,
+  SUM: buildSumPractice,
+  AVERAGE: buildAveragePractice,
+  COUNTIF: buildCountifPractice,
+  VLOOKUP: (mount) => buildVlookupPractice(mount, false),
+  XLOOKUP: (mount) => buildVlookupPractice(mount, true),
+  SUMIFS: buildSumifsPractice,
+};
+
+function mountPractice(formulaName) {
+  const mount = document.getElementById("practiceMount");
+  if (!mount) return;
+  const builder = PRACTICE_BUILDERS[formulaName];
+  if (builder) builder(mount);
 }
 
 async function initFormulaApp() {
