@@ -36,7 +36,15 @@
       "SUMIF",
       "SUMIFS",
       "AVERAGE"
-    ]
+    ],
+    "whyUse": "SUM is usually the very first formula people learn, because adding up a column or row of numbers by hand is slow and error-prone. Any time you're totaling hours, costs, or quantities, SUM does it instantly and updates automatically if the numbers change.",
+    "steps": [
+      "Click the cell where you want the total to appear.",
+      "Type =SUM( and then select the range of cells you want to add.",
+      "Close the parenthesis and press Enter.",
+      "If you add a new row inside that range later, the total updates on its own."
+    ],
+    "hasPractice": true
   },
   {
     "formula": "AVERAGE",
@@ -75,7 +83,15 @@
       "SUM",
       "MEDIAN",
       "AVERAGEIF"
-    ]
+    ],
+    "whyUse": "AVERAGE gives you a single representative number for a group of values. It automatically ignores blank cells, so partial data doesn't skew the result the way it would with manual math.",
+    "steps": [
+      "Select the cell where the average should appear.",
+      "Type =AVERAGE( and select the range of numbers.",
+      "Close the parenthesis and press Enter.",
+      "Remember: blank cells are ignored, but a cell containing 0 still counts."
+    ],
+    "hasPractice": true
   },
   {
     "formula": "COUNT",
@@ -113,7 +129,16 @@
       "COUNTA",
       "COUNTIF",
       "COUNTIFS"
-    ]
+    ],
+    "whyUse": "Counts how many cells in a range contain numbers. It's especially useful any time you'd otherwise do this calculation by hand, since the result updates automatically whenever your underlying data changes.",
+    "steps": [
+      "Identify the values or ranges you need for each argument.",
+      "Work out your value1: The first value to check.",
+      "Work out your value2 (optional): An additional value to check.",
+      "Put it together following the syntax: =COUNT(value1, [value2], ...)",
+      "Enter the formula and confirm the result looks right, then test with a different input."
+    ],
+    "hasPractice": false
   },
   {
     "formula": "COUNTA",
@@ -150,7 +175,16 @@
     "relatedFormulas": [
       "COUNT",
       "COUNTBLANK"
-    ]
+    ],
+    "whyUse": "Counts non-empty cells, whether they contain numbers, text, or dates. It's especially useful any time you'd otherwise do this calculation by hand, since the result updates automatically whenever your underlying data changes.",
+    "steps": [
+      "Identify the values or ranges you need for each argument.",
+      "Work out your value1: The first value to check.",
+      "Work out your value2 (optional): An additional value to check.",
+      "Put it together following the syntax: =COUNTA(value1, [value2], ...)",
+      "Enter the formula and confirm the result looks right, then test with a different input."
+    ],
+    "hasPractice": false
   },
   {
     "formula": "COUNTIF",
@@ -189,7 +223,15 @@
       "COUNTIFS",
       "SUMIF",
       "COUNTA"
-    ]
+    ],
+    "whyUse": "COUNTIF answers questions like \"how many of these meet a condition?\" It's one condition only; for more than one, you'd move up to COUNTIFS.",
+    "steps": [
+      "Identify the range you want to check, e.g. a column of department names.",
+      "Decide the condition — an exact match (\"HR\"), a comparison (\">100\"), or a wildcard pattern.",
+      "Write =COUNTIF(range, criteria) with your range and condition in place.",
+      "Press Enter — the result is a count, not a list, of how many cells matched."
+    ],
+    "hasPractice": true
   },
   {
     "formula": "COUNTIFS",
@@ -242,7 +284,15 @@
       "COUNTIF",
       "SUMIFS",
       "AVERAGEIFS"
-    ]
+    ],
+    "whyUse": "Like SUMIFS but for counting — useful for questions with more than one condition.",
+    "steps": [
+      "Identify your first condition: a criteria_range and its criteria.",
+      "Add further criteria_range/criteria pairs for each extra condition you need.",
+      "Write it together: =COUNTIFS(criteria_range1, criteria1, criteria_range2, criteria2, ...).",
+      "Remember it's AND logic only — every condition must be true for a row to be counted."
+    ],
+    "hasPractice": false
   },
   {
     "formula": "SUMIF",
@@ -286,7 +336,17 @@
       "SUMIFS",
       "COUNTIF",
       "AVERAGEIF"
-    ]
+    ],
+    "whyUse": "Adds up values in a range that meet one condition. It's especially useful any time you'd otherwise do this calculation by hand, since the result updates automatically whenever your underlying data changes.",
+    "steps": [
+      "Identify the values or ranges you need for each argument.",
+      "Work out your range: The range of cells to evaluate.",
+      "Work out your criteria: The condition a cell must meet to be included.",
+      "Work out your sum_range (optional): The actual cells to add up (if different from the range being checked).",
+      "Put it together following the syntax: =SUMIF(range, criteria, [sum_range])",
+      "Enter the formula and confirm the result looks right, then test with a different input."
+    ],
+    "hasPractice": false
   },
   {
     "formula": "SUMIFS",
@@ -344,7 +404,16 @@
       "SUMIF",
       "COUNTIFS",
       "AVERAGEIFS"
-    ]
+    ],
+    "whyUse": "SUMIFS is what you reach for once a single condition (SUMIF) isn't enough — for example, totaling sales for a specific region AND a specific month at the same time.",
+    "steps": [
+      "Identify the sum_range — the actual numbers you want to total.",
+      "Identify your first condition: a criteria_range and the criteria it must match.",
+      "Add additional criteria_range/criteria pairs for each extra condition — all must be true (AND logic).",
+      "Write it together: =SUMIFS(sum_range, criteria_range1, criteria1, criteria_range2, criteria2, ...).",
+      "Double-check every range is the exact same size."
+    ],
+    "hasPractice": true
   },
   {
     "formula": "IF",
@@ -398,7 +467,16 @@
       "AND",
       "OR",
       "IFERROR"
-    ]
+    ],
+    "whyUse": "IF is how you make a spreadsheet make a decision instead of just displaying data. Anywhere you'd say \"if this, then that\" out loud about your data, IF can likely do it automatically.",
+    "steps": [
+      "Decide what you're testing — a cell being over/under a number, equal to specific text, or blank. This becomes your logical_test.",
+      "Decide what should show up when that test is TRUE. This is your value_if_true.",
+      "Decide what should show up when it's FALSE. This is your value_if_false.",
+      "Put it together: =IF(logical_test, value_if_true, value_if_false).",
+      "Test it with a value that should pass, and one that should fail, to confirm both sides work."
+    ],
+    "hasPractice": true
   },
   {
     "formula": "IFS",
@@ -447,7 +525,17 @@
       "IF",
       "SWITCH",
       "AND"
-    ]
+    ],
+    "whyUse": "Checks multiple conditions in order and returns the value for the first one that's true — a cleaner alternative to nested IFs. It's especially useful any time you'd otherwise do this calculation by hand, since the result updates automatically whenever your underlying data changes.",
+    "steps": [
+      "Identify the values or ranges you need for each argument.",
+      "Work out your condition1: The first condition to test.",
+      "Work out your value1: The first value to check.",
+      "Work out your condition2 (optional): An additional condition to test.",
+      "Put it together following the syntax: =IFS(condition1, value1, [condition2, value2], ...)",
+      "Enter the formula and confirm the result looks right, then test with a different input."
+    ],
+    "hasPractice": false
   },
   {
     "formula": "AND",
@@ -485,7 +573,16 @@
       "OR",
       "NOT",
       "IF"
-    ]
+    ],
+    "whyUse": "Returns TRUE only if every condition supplied is true. It's especially useful any time you'd otherwise do this calculation by hand, since the result updates automatically whenever your underlying data changes.",
+    "steps": [
+      "Identify the values or ranges you need for each argument.",
+      "Work out your logical1: The first condition to check.",
+      "Work out your logical2 (optional): An additional condition to check.",
+      "Put it together following the syntax: =AND(logical1, [logical2], ...)",
+      "Enter the formula and confirm the result looks right, then test with a different input."
+    ],
+    "hasPractice": false
   },
   {
     "formula": "OR",
@@ -523,7 +620,16 @@
       "AND",
       "NOT",
       "IF"
-    ]
+    ],
+    "whyUse": "Returns TRUE if at least one of the supplied conditions is true. It's especially useful any time you'd otherwise do this calculation by hand, since the result updates automatically whenever your underlying data changes.",
+    "steps": [
+      "Identify the values or ranges you need for each argument.",
+      "Work out your logical1: The first condition to check.",
+      "Work out your logical2 (optional): An additional condition to check.",
+      "Put it together following the syntax: =OR(logical1, [logical2], ...)",
+      "Enter the formula and confirm the result looks right, then test with a different input."
+    ],
+    "hasPractice": false
   },
   {
     "formula": "NOT",
@@ -556,7 +662,15 @@
       "AND",
       "OR",
       "IF"
-    ]
+    ],
+    "whyUse": "Reverses TRUE to FALSE and vice versa. It's especially useful any time you'd otherwise do this calculation by hand, since the result updates automatically whenever your underlying data changes.",
+    "steps": [
+      "Identify the values or ranges you need for each argument.",
+      "Work out your logical: The condition to reverse.",
+      "Put it together following the syntax: =NOT(logical)",
+      "Enter the formula and confirm the result looks right, then test with a different input."
+    ],
+    "hasPractice": false
   },
   {
     "formula": "VLOOKUP",
@@ -610,7 +724,16 @@
       "INDEX",
       "MATCH",
       "HLOOKUP"
-    ]
+    ],
+    "whyUse": "VLOOKUP solves a very common problem: you have two related tables, and you want to automatically pull matching information from one into the other, instead of manually searching and copying.",
+    "steps": [
+      "Identify your lookup_value — the thing you're searching for.",
+      "Identify the table_array — the full range of the table you're searching in. The lookup value must be in that table's first column.",
+      "Count which column (from the left, starting at 1) holds the value you want returned — that's col_index_num.",
+      "Almost always set the last argument to FALSE for an exact match.",
+      "Write it together: =VLOOKUP(lookup_value, table_array, col_index_num, FALSE)."
+    ],
+    "hasPractice": true
   },
   {
     "formula": "HLOOKUP",
@@ -658,7 +781,17 @@
       "VLOOKUP",
       "INDEX",
       "MATCH"
-    ]
+    ],
+    "whyUse": "Like VLOOKUP but searches across the first row of a table instead of the first column. It's especially useful any time you'd otherwise do this calculation by hand, since the result updates automatically whenever your underlying data changes.",
+    "steps": [
+      "Identify the values or ranges you need for each argument.",
+      "Work out your lookup_value: The value you're searching for.",
+      "Work out your table_array: The full table range that contains the data.",
+      "Work out your row_index_num: Which row (counting from the top of the table) to pull the result from.",
+      "Put it together following the syntax: =HLOOKUP(lookup_value, table_array, row_index_num, [range_lookup])",
+      "Enter the formula and confirm the result looks right, then test with a different input."
+    ],
+    "hasPractice": false
   },
   {
     "formula": "INDEX",
@@ -705,7 +838,15 @@
       "MATCH",
       "VLOOKUP",
       "XLOOKUP"
-    ]
+    ],
+    "whyUse": "INDEX on its own just retrieves a value by position, but it becomes powerful paired with MATCH — together they replicate (and improve on) what VLOOKUP does.",
+    "steps": [
+      "Identify the array — the range you want to pull a value from.",
+      "Determine the row_num (and col_num if needed) of the value you want.",
+      "For a static position, write =INDEX(array, row_num) directly.",
+      "For a dynamic position, nest a MATCH formula in place of row_num."
+    ],
+    "hasPractice": false
   },
   {
     "formula": "MATCH",
@@ -751,7 +892,15 @@
     "relatedFormulas": [
       "INDEX",
       "VLOOKUP"
-    ]
+    ],
+    "whyUse": "MATCH doesn't return a value — it returns a position. That makes it the perfect partner for INDEX: MATCH finds where something is, and INDEX fetches what's there.",
+    "steps": [
+      "Identify the lookup_value you're searching for.",
+      "Identify the lookup_array — the single range you're searching within.",
+      "Set match_type to 0 for an exact match.",
+      "Write it together: =MATCH(lookup_value, lookup_array, 0)."
+    ],
+    "hasPractice": false
   },
   {
     "formula": "XLOOKUP",
@@ -813,7 +962,16 @@
       "VLOOKUP",
       "INDEX",
       "MATCH"
-    ]
+    ],
+    "whyUse": "XLOOKUP does everything VLOOKUP does, but more flexibly — it can search in either direction, return from a column to the left of the search column, and show a custom message instead of an error when nothing matches.",
+    "steps": [
+      "Identify the lookup_value you're searching for.",
+      "Identify the lookup_array — the single column you're searching in.",
+      "Identify the return_array — the column you want a value pulled from.",
+      "Optionally add a fourth argument for if_not_found.",
+      "Write it together: =XLOOKUP(lookup_value, lookup_array, return_array, \"Not found\")."
+    ],
+    "hasPractice": true
   },
   {
     "formula": "IFERROR",
@@ -851,7 +1009,15 @@
       "IFNA",
       "IF",
       "VLOOKUP"
-    ]
+    ],
+    "whyUse": "Formulas fail sometimes. IFERROR lets you show something readable instead of an error code, without changing what the formula does when it works correctly.",
+    "steps": [
+      "Take your existing formula that sometimes errors.",
+      "Wrap it as the first argument: =IFERROR(your_formula, ...).",
+      "Add what should display instead of the error as the second argument.",
+      "The formula still works normally when there's no error."
+    ],
+    "hasPractice": false
   },
   {
     "formula": "IFNA",
@@ -888,7 +1054,16 @@
     "relatedFormulas": [
       "IFERROR",
       "VLOOKUP"
-    ]
+    ],
+    "whyUse": "Like IFERROR, but only catches #N/A errors specifically, letting other errors (like #DIV/0!) still show through. It's especially useful any time you'd otherwise do this calculation by hand, since the result updates automatically whenever your underlying data changes.",
+    "steps": [
+      "Identify the values or ranges you need for each argument.",
+      "Work out your value: The value to evaluate.",
+      "Work out your value_if_na: Additional argument.",
+      "Put it together following the syntax: =IFNA(value, value_if_na)",
+      "Enter the formula and confirm the result looks right, then test with a different input."
+    ],
+    "hasPractice": false
   },
   {
     "formula": "CONCATENATE",
@@ -926,7 +1101,16 @@
       "CONCAT",
       "TEXTJOIN",
       "&"
-    ]
+    ],
+    "whyUse": "Joins multiple text values into one. Largely superseded by CONCAT and TEXTJOIN. It's especially useful any time you'd otherwise do this calculation by hand, since the result updates automatically whenever your underlying data changes.",
+    "steps": [
+      "Identify the values or ranges you need for each argument.",
+      "Work out your text1: The first text value.",
+      "Work out your text2 (optional): Additional argument.",
+      "Put it together following the syntax: =CONCATENATE(text1, [text2], ...)",
+      "Enter the formula and confirm the result looks right, then test with a different input."
+    ],
+    "hasPractice": false
   },
   {
     "formula": "TEXTJOIN",
@@ -973,7 +1157,15 @@
     "relatedFormulas": [
       "CONCAT",
       "CONCATENATE"
-    ]
+    ],
+    "whyUse": "TEXTJOIN is the modern way to combine text from multiple cells with a separator between them, and it can automatically skip blanks.",
+    "steps": [
+      "Decide your delimiter — the character(s) between each joined value.",
+      "Decide whether to skip blank cells (usually TRUE).",
+      "List the cells or range to join.",
+      "Write it together: =TEXTJOIN(\", \", TRUE, A2:A5)."
+    ],
+    "hasPractice": false
   },
   {
     "formula": "LEFT",
@@ -1011,7 +1203,16 @@
       "RIGHT",
       "MID",
       "LEN"
-    ]
+    ],
+    "whyUse": "Returns a specified number of characters from the start of a text string. It's especially useful any time you'd otherwise do this calculation by hand, since the result updates automatically whenever your underlying data changes.",
+    "steps": [
+      "Identify the values or ranges you need for each argument.",
+      "Work out your text: The text string to work with.",
+      "Work out your num_chars (optional): How many characters to return.",
+      "Put it together following the syntax: =LEFT(text, [num_chars])",
+      "Enter the formula and confirm the result looks right, then test with a different input."
+    ],
+    "hasPractice": false
   },
   {
     "formula": "RIGHT",
@@ -1048,7 +1249,16 @@
     "relatedFormulas": [
       "LEFT",
       "MID"
-    ]
+    ],
+    "whyUse": "Returns a specified number of characters from the end of a text string. It's especially useful any time you'd otherwise do this calculation by hand, since the result updates automatically whenever your underlying data changes.",
+    "steps": [
+      "Identify the values or ranges you need for each argument.",
+      "Work out your text: The text string to work with.",
+      "Work out your num_chars (optional): How many characters to return.",
+      "Put it together following the syntax: =RIGHT(text, [num_chars])",
+      "Enter the formula and confirm the result looks right, then test with a different input."
+    ],
+    "hasPractice": false
   },
   {
     "formula": "MID",
@@ -1091,7 +1301,17 @@
       "LEFT",
       "RIGHT",
       "FIND"
-    ]
+    ],
+    "whyUse": "Extracts a substring from the middle of a text string, starting at a given position. It's especially useful any time you'd otherwise do this calculation by hand, since the result updates automatically whenever your underlying data changes.",
+    "steps": [
+      "Identify the values or ranges you need for each argument.",
+      "Work out your text: The text string to work with.",
+      "Work out your start_num: The character position to start from (counting from 1).",
+      "Work out your num_chars: How many characters to return.",
+      "Put it together following the syntax: =MID(text, start_num, num_chars)",
+      "Enter the formula and confirm the result looks right, then test with a different input."
+    ],
+    "hasPractice": false
   },
   {
     "formula": "LEN",
@@ -1124,7 +1344,15 @@
       "TRIM",
       "LEFT",
       "RIGHT"
-    ]
+    ],
+    "whyUse": "Returns the number of characters in a text string, including spaces. It's especially useful any time you'd otherwise do this calculation by hand, since the result updates automatically whenever your underlying data changes.",
+    "steps": [
+      "Identify the values or ranges you need for each argument.",
+      "Work out your text: The text string to work with.",
+      "Put it together following the syntax: =LEN(text)",
+      "Enter the formula and confirm the result looks right, then test with a different input."
+    ],
+    "hasPractice": false
   },
   {
     "formula": "TRIM",
@@ -1156,7 +1384,15 @@
     "relatedFormulas": [
       "CLEAN",
       "SUBSTITUTE"
-    ]
+    ],
+    "whyUse": "Removes extra spaces from text, leaving single spaces between words. It's especially useful any time you'd otherwise do this calculation by hand, since the result updates automatically whenever your underlying data changes.",
+    "steps": [
+      "Identify the values or ranges you need for each argument.",
+      "Work out your text: The text string to work with.",
+      "Put it together following the syntax: =TRIM(text)",
+      "Enter the formula and confirm the result looks right, then test with a different input."
+    ],
+    "hasPractice": false
   },
   {
     "formula": "SUBSTITUTE",
@@ -1204,7 +1440,17 @@
       "TRIM",
       "FIND",
       "REPLACE"
-    ]
+    ],
+    "whyUse": "Replaces occurrences of specific text within a string. It's especially useful any time you'd otherwise do this calculation by hand, since the result updates automatically whenever your underlying data changes.",
+    "steps": [
+      "Identify the values or ranges you need for each argument.",
+      "Work out your text: The text string to work with.",
+      "Work out your old_text: The specific text you want to replace.",
+      "Work out your new_text: The text to replace it with.",
+      "Put it together following the syntax: =SUBSTITUTE(text, old_text, new_text, [instance_num])",
+      "Enter the formula and confirm the result looks right, then test with a different input."
+    ],
+    "hasPractice": false
   },
   {
     "formula": "FIND",
@@ -1248,7 +1494,17 @@
       "SEARCH",
       "MID",
       "SUBSTITUTE"
-    ]
+    ],
+    "whyUse": "Returns the position of one text string within another. Case-sensitive. It's especially useful any time you'd otherwise do this calculation by hand, since the result updates automatically whenever your underlying data changes.",
+    "steps": [
+      "Identify the values or ranges you need for each argument.",
+      "Work out your find_text: The text you're looking for.",
+      "Work out your within_text: The text to search inside.",
+      "Work out your start_num (optional): The character position to start from (counting from 1).",
+      "Put it together following the syntax: =FIND(find_text, within_text, [start_num])",
+      "Enter the formula and confirm the result looks right, then test with a different input."
+    ],
+    "hasPractice": false
   },
   {
     "formula": "SEARCH",
@@ -1290,7 +1546,17 @@
     "relatedFormulas": [
       "FIND",
       "MID"
-    ]
+    ],
+    "whyUse": "Same as FIND but not case-sensitive, and supports wildcards. It's especially useful any time you'd otherwise do this calculation by hand, since the result updates automatically whenever your underlying data changes.",
+    "steps": [
+      "Identify the values or ranges you need for each argument.",
+      "Work out your find_text: The text you're looking for.",
+      "Work out your within_text: The text to search inside.",
+      "Work out your start_num (optional): The character position to start from (counting from 1).",
+      "Put it together following the syntax: =SEARCH(find_text, within_text, [start_num])",
+      "Enter the formula and confirm the result looks right, then test with a different input."
+    ],
+    "hasPractice": false
   },
   {
     "formula": "UPPER",
@@ -1322,7 +1588,15 @@
     "relatedFormulas": [
       "LOWER",
       "PROPER"
-    ]
+    ],
+    "whyUse": "Converts text to all uppercase. It's especially useful any time you'd otherwise do this calculation by hand, since the result updates automatically whenever your underlying data changes.",
+    "steps": [
+      "Identify the values or ranges you need for each argument.",
+      "Work out your text: The text string to work with.",
+      "Put it together following the syntax: =UPPER(text)",
+      "Enter the formula and confirm the result looks right, then test with a different input."
+    ],
+    "hasPractice": false
   },
   {
     "formula": "LOWER",
@@ -1354,7 +1628,15 @@
     "relatedFormulas": [
       "UPPER",
       "PROPER"
-    ]
+    ],
+    "whyUse": "Converts text to all lowercase. It's especially useful any time you'd otherwise do this calculation by hand, since the result updates automatically whenever your underlying data changes.",
+    "steps": [
+      "Identify the values or ranges you need for each argument.",
+      "Work out your text: The text string to work with.",
+      "Put it together following the syntax: =LOWER(text)",
+      "Enter the formula and confirm the result looks right, then test with a different input."
+    ],
+    "hasPractice": false
   },
   {
     "formula": "PROPER",
@@ -1386,7 +1668,15 @@
     "relatedFormulas": [
       "UPPER",
       "LOWER"
-    ]
+    ],
+    "whyUse": "Capitalizes the first letter of each word in a text string. It's especially useful any time you'd otherwise do this calculation by hand, since the result updates automatically whenever your underlying data changes.",
+    "steps": [
+      "Identify the values or ranges you need for each argument.",
+      "Work out your text: The text string to work with.",
+      "Put it together following the syntax: =PROPER(text)",
+      "Enter the formula and confirm the result looks right, then test with a different input."
+    ],
+    "hasPractice": false
   },
   {
     "formula": "TODAY",
@@ -1413,7 +1703,14 @@
       "NOW",
       "DATE",
       "DATEDIF"
-    ]
+    ],
+    "whyUse": "Returns the current date, updated automatically whenever the sheet recalculates. It's especially useful any time you'd otherwise do this calculation by hand, since the result updates automatically whenever your underlying data changes.",
+    "steps": [
+      "Identify the values or ranges you need for each argument.",
+      "Put it together following the syntax: =TODAY()",
+      "Enter the formula and confirm the result looks right, then test with a different input."
+    ],
+    "hasPractice": false
   },
   {
     "formula": "NOW",
@@ -1439,7 +1736,14 @@
     "relatedFormulas": [
       "TODAY",
       "DATE"
-    ]
+    ],
+    "whyUse": "Returns the current date and time, updating on every recalculation. It's especially useful any time you'd otherwise do this calculation by hand, since the result updates automatically whenever your underlying data changes.",
+    "steps": [
+      "Identify the values or ranges you need for each argument.",
+      "Put it together following the syntax: =NOW()",
+      "Enter the formula and confirm the result looks right, then test with a different input."
+    ],
+    "hasPractice": false
   },
   {
     "formula": "DATE",
@@ -1483,7 +1787,17 @@
       "MONTH",
       "DAY",
       "DATEDIF"
-    ]
+    ],
+    "whyUse": "Builds a proper date value from separate year, month, and day numbers. It's especially useful any time you'd otherwise do this calculation by hand, since the result updates automatically whenever your underlying data changes.",
+    "steps": [
+      "Identify the values or ranges you need for each argument.",
+      "Work out your year: The year, as a number (e.g. 2026).",
+      "Work out your month: The month, as a number (1-12).",
+      "Work out your day: The day of the month, as a number.",
+      "Put it together following the syntax: =DATE(year, month, day)",
+      "Enter the formula and confirm the result looks right, then test with a different input."
+    ],
+    "hasPractice": false
   },
   {
     "formula": "DATEDIF",
@@ -1526,7 +1840,15 @@
       "DATE",
       "TODAY",
       "NETWORKDAYS"
-    ]
+    ],
+    "whyUse": "DATEDIF answers \"how much time is between these two dates\" in whatever unit you need, making it the standard way to calculate age, tenure, or time remaining.",
+    "steps": [
+      "Identify your start_date and end_date — both need to be real date values.",
+      "Choose your unit: \"d\" for days, \"m\" for full months, or \"y\" for full years.",
+      "Write it together: =DATEDIF(start_date, end_date, \"y\").",
+      "It won't appear in Excel's formula autocomplete — that's normal, it still works."
+    ],
+    "hasPractice": false
   },
   {
     "formula": "YEAR",
@@ -1559,7 +1881,15 @@
       "MONTH",
       "DAY",
       "DATE"
-    ]
+    ],
+    "whyUse": "Extracts the year from a date value. It's especially useful any time you'd otherwise do this calculation by hand, since the result updates automatically whenever your underlying data changes.",
+    "steps": [
+      "Identify the values or ranges you need for each argument.",
+      "Work out your serial_number: A date value (or a cell containing one).",
+      "Put it together following the syntax: =YEAR(serial_number)",
+      "Enter the formula and confirm the result looks right, then test with a different input."
+    ],
+    "hasPractice": false
   },
   {
     "formula": "MONTH",
@@ -1592,7 +1922,15 @@
       "YEAR",
       "DAY",
       "TEXT"
-    ]
+    ],
+    "whyUse": "Extracts the month (as a number 1-12) from a date value. It's especially useful any time you'd otherwise do this calculation by hand, since the result updates automatically whenever your underlying data changes.",
+    "steps": [
+      "Identify the values or ranges you need for each argument.",
+      "Work out your serial_number: A date value (or a cell containing one).",
+      "Put it together following the syntax: =MONTH(serial_number)",
+      "Enter the formula and confirm the result looks right, then test with a different input."
+    ],
+    "hasPractice": false
   },
   {
     "formula": "DAY",
@@ -1625,7 +1963,15 @@
       "WEEKDAY",
       "MONTH",
       "YEAR"
-    ]
+    ],
+    "whyUse": "Extracts the day of the month (1-31) from a date value. It's especially useful any time you'd otherwise do this calculation by hand, since the result updates automatically whenever your underlying data changes.",
+    "steps": [
+      "Identify the values or ranges you need for each argument.",
+      "Work out your serial_number: A date value (or a cell containing one).",
+      "Put it together following the syntax: =DAY(serial_number)",
+      "Enter the formula and confirm the result looks right, then test with a different input."
+    ],
+    "hasPractice": false
   },
   {
     "formula": "WEEKDAY",
@@ -1662,7 +2008,16 @@
     "relatedFormulas": [
       "DAY",
       "NETWORKDAYS"
-    ]
+    ],
+    "whyUse": "Returns which day of the week a date falls on, as a number. It's especially useful any time you'd otherwise do this calculation by hand, since the result updates automatically whenever your underlying data changes.",
+    "steps": [
+      "Identify the values or ranges you need for each argument.",
+      "Work out your serial_number: A date value (or a cell containing one).",
+      "Work out your return_type (optional): Additional argument.",
+      "Put it together following the syntax: =WEEKDAY(serial_number, [return_type])",
+      "Enter the formula and confirm the result looks right, then test with a different input."
+    ],
+    "hasPractice": false
   },
   {
     "formula": "NETWORKDAYS",
@@ -1704,7 +2059,17 @@
     "relatedFormulas": [
       "DATEDIF",
       "WEEKDAY"
-    ]
+    ],
+    "whyUse": "Counts working days (Mon-Fri) between two dates, optionally excluding a list of holiday dates. It's especially useful any time you'd otherwise do this calculation by hand, since the result updates automatically whenever your underlying data changes.",
+    "steps": [
+      "Identify the values or ranges you need for each argument.",
+      "Work out your start_date: The earlier date in the calculation.",
+      "Work out your end_date: The later date in the calculation.",
+      "Work out your holidays (optional): An optional list of dates to exclude as holidays.",
+      "Put it together following the syntax: =NETWORKDAYS(start_date, end_date, [holidays])",
+      "Enter the formula and confirm the result looks right, then test with a different input."
+    ],
+    "hasPractice": false
   },
   {
     "formula": "EOMONTH",
@@ -1741,7 +2106,16 @@
     "relatedFormulas": [
       "DATE",
       "MONTH"
-    ]
+    ],
+    "whyUse": "Returns the last day of the month that is a given number of months before or after a date. It's especially useful any time you'd otherwise do this calculation by hand, since the result updates automatically whenever your underlying data changes.",
+    "steps": [
+      "Identify the values or ranges you need for each argument.",
+      "Work out your start_date: The earlier date in the calculation.",
+      "Work out your months: How many months to shift, positive or negative.",
+      "Put it together following the syntax: =EOMONTH(start_date, months)",
+      "Enter the formula and confirm the result looks right, then test with a different input."
+    ],
+    "hasPractice": false
   },
   {
     "formula": "ROUND",
@@ -1778,7 +2152,16 @@
     "relatedFormulas": [
       "ROUNDUP",
       "ROUNDDOWN"
-    ]
+    ],
+    "whyUse": "Rounds a number to a specified number of decimal places. It's especially useful any time you'd otherwise do this calculation by hand, since the result updates automatically whenever your underlying data changes.",
+    "steps": [
+      "Identify the values or ranges you need for each argument.",
+      "Work out your number: A number, or a cell reference containing a number.",
+      "Work out your num_digits: How many decimal places to round to (negative rounds to the left of the decimal).",
+      "Put it together following the syntax: =ROUND(number, num_digits)",
+      "Enter the formula and confirm the result looks right, then test with a different input."
+    ],
+    "hasPractice": false
   },
   {
     "formula": "ROUNDUP",
@@ -1815,7 +2198,16 @@
     "relatedFormulas": [
       "ROUND",
       "ROUNDDOWN"
-    ]
+    ],
+    "whyUse": "Always rounds a number away from zero, regardless of the following digit. It's especially useful any time you'd otherwise do this calculation by hand, since the result updates automatically whenever your underlying data changes.",
+    "steps": [
+      "Identify the values or ranges you need for each argument.",
+      "Work out your number: A number, or a cell reference containing a number.",
+      "Work out your num_digits: How many decimal places to round to (negative rounds to the left of the decimal).",
+      "Put it together following the syntax: =ROUNDUP(number, num_digits)",
+      "Enter the formula and confirm the result looks right, then test with a different input."
+    ],
+    "hasPractice": false
   },
   {
     "formula": "ROUNDDOWN",
@@ -1853,7 +2245,16 @@
       "ROUND",
       "ROUNDUP",
       "INT"
-    ]
+    ],
+    "whyUse": "Always rounds a number toward zero (truncates), regardless of the following digit. It's especially useful any time you'd otherwise do this calculation by hand, since the result updates automatically whenever your underlying data changes.",
+    "steps": [
+      "Identify the values or ranges you need for each argument.",
+      "Work out your number: A number, or a cell reference containing a number.",
+      "Work out your num_digits: How many decimal places to round to (negative rounds to the left of the decimal).",
+      "Put it together following the syntax: =ROUNDDOWN(number, num_digits)",
+      "Enter the formula and confirm the result looks right, then test with a different input."
+    ],
+    "hasPractice": false
   },
   {
     "formula": "ABS",
@@ -1885,7 +2286,15 @@
     "relatedFormulas": [
       "ROUND",
       "SIGN"
-    ]
+    ],
+    "whyUse": "Returns the absolute (positive) value of a number, stripping any negative sign. It's especially useful any time you'd otherwise do this calculation by hand, since the result updates automatically whenever your underlying data changes.",
+    "steps": [
+      "Identify the values or ranges you need for each argument.",
+      "Work out your number: A number, or a cell reference containing a number.",
+      "Put it together following the syntax: =ABS(number)",
+      "Enter the formula and confirm the result looks right, then test with a different input."
+    ],
+    "hasPractice": false
   },
   {
     "formula": "MAX",
@@ -1923,7 +2332,16 @@
       "MIN",
       "MAXIFS",
       "LARGE"
-    ]
+    ],
+    "whyUse": "Returns the largest value in a set of numbers. It's especially useful any time you'd otherwise do this calculation by hand, since the result updates automatically whenever your underlying data changes.",
+    "steps": [
+      "Identify the values or ranges you need for each argument.",
+      "Work out your number1: The first number or range to include.",
+      "Work out your number2 (optional): An additional number or range to include.",
+      "Put it together following the syntax: =MAX(number1, [number2], ...)",
+      "Enter the formula and confirm the result looks right, then test with a different input."
+    ],
+    "hasPractice": false
   },
   {
     "formula": "MIN",
@@ -1961,7 +2379,16 @@
       "MAX",
       "MINIFS",
       "SMALL"
-    ]
+    ],
+    "whyUse": "Returns the smallest value in a set of numbers. It's especially useful any time you'd otherwise do this calculation by hand, since the result updates automatically whenever your underlying data changes.",
+    "steps": [
+      "Identify the values or ranges you need for each argument.",
+      "Work out your number1: The first number or range to include.",
+      "Work out your number2 (optional): An additional number or range to include.",
+      "Put it together following the syntax: =MIN(number1, [number2], ...)",
+      "Enter the formula and confirm the result looks right, then test with a different input."
+    ],
+    "hasPractice": false
   },
   {
     "formula": "MAXIFS",
@@ -2004,7 +2431,17 @@
       "MAX",
       "MINIFS",
       "SUMIFS"
-    ]
+    ],
+    "whyUse": "Returns the largest value in a range that meets one or more conditions. It's especially useful any time you'd otherwise do this calculation by hand, since the result updates automatically whenever your underlying data changes.",
+    "steps": [
+      "Identify the values or ranges you need for each argument.",
+      "Work out your max_range: The cells to evaluate for the largest value.",
+      "Work out your criteria_range1: The first range of cells to check against a condition.",
+      "Work out your criteria1: The first condition to apply.",
+      "Put it together following the syntax: =MAXIFS(max_range, criteria_range1, criteria1, ...)",
+      "Enter the formula and confirm the result looks right, then test with a different input."
+    ],
+    "hasPractice": false
   },
   {
     "formula": "MINIFS",
@@ -2046,7 +2483,17 @@
     "relatedFormulas": [
       "MIN",
       "MAXIFS"
-    ]
+    ],
+    "whyUse": "Returns the smallest value in a range that meets one or more conditions. It's especially useful any time you'd otherwise do this calculation by hand, since the result updates automatically whenever your underlying data changes.",
+    "steps": [
+      "Identify the values or ranges you need for each argument.",
+      "Work out your min_range: The cells to evaluate for the smallest value.",
+      "Work out your criteria_range1: The first range of cells to check against a condition.",
+      "Work out your criteria1: The first condition to apply.",
+      "Put it together following the syntax: =MINIFS(min_range, criteria_range1, criteria1, ...)",
+      "Enter the formula and confirm the result looks right, then test with a different input."
+    ],
+    "hasPractice": false
   },
   {
     "formula": "RANK",
@@ -2088,7 +2535,17 @@
     "relatedFormulas": [
       "LARGE",
       "SMALL"
-    ]
+    ],
+    "whyUse": "Returns the rank of a number within a list, with 1 being the highest by default. It's especially useful any time you'd otherwise do this calculation by hand, since the result updates automatically whenever your underlying data changes.",
+    "steps": [
+      "Identify the values or ranges you need for each argument.",
+      "Work out your number: A number, or a cell reference containing a number.",
+      "Work out your ref: The full list of values to rank against.",
+      "Work out your order (optional): 0 (default) ranks highest value as 1; 1 ranks lowest value as 1.",
+      "Put it together following the syntax: =RANK(number, ref, [order])",
+      "Enter the formula and confirm the result looks right, then test with a different input."
+    ],
+    "hasPractice": false
   },
   {
     "formula": "LARGE",
@@ -2126,7 +2583,16 @@
       "SMALL",
       "MAX",
       "RANK"
-    ]
+    ],
+    "whyUse": "Returns the k-th largest value in a data set — e.g. the 2nd or 3rd highest. It's especially useful any time you'd otherwise do this calculation by hand, since the result updates automatically whenever your underlying data changes.",
+    "steps": [
+      "Identify the values or ranges you need for each argument.",
+      "Work out your array: The range or array of values.",
+      "Work out your k: Which position to return, counting from the top (1st, 2nd, 3rd, ...).",
+      "Put it together following the syntax: =LARGE(array, k)",
+      "Enter the formula and confirm the result looks right, then test with a different input."
+    ],
+    "hasPractice": false
   },
   {
     "formula": "SMALL",
@@ -2163,7 +2629,16 @@
     "relatedFormulas": [
       "LARGE",
       "MIN"
-    ]
+    ],
+    "whyUse": "Returns the k-th smallest value in a data set. It's especially useful any time you'd otherwise do this calculation by hand, since the result updates automatically whenever your underlying data changes.",
+    "steps": [
+      "Identify the values or ranges you need for each argument.",
+      "Work out your array: The range or array of values.",
+      "Work out your k: Which position to return, counting from the top (1st, 2nd, 3rd, ...).",
+      "Put it together following the syntax: =SMALL(array, k)",
+      "Enter the formula and confirm the result looks right, then test with a different input."
+    ],
+    "hasPractice": false
   },
   {
     "formula": "UNIQUE",
@@ -2206,7 +2681,17 @@
     "relatedFormulas": [
       "FILTER",
       "SORT"
-    ]
+    ],
+    "whyUse": "Returns a list of unique values from a range, spilling the results into adjacent cells automatically. It's especially useful any time you'd otherwise do this calculation by hand, since the result updates automatically whenever your underlying data changes.",
+    "steps": [
+      "Identify the values or ranges you need for each argument.",
+      "Work out your array: The range or array of values.",
+      "Work out your by_col (optional): TRUE to operate across columns instead of rows.",
+      "Work out your exactly_once (optional): Additional argument.",
+      "Put it together following the syntax: =UNIQUE(array, [by_col], [exactly_once])",
+      "Enter the formula and confirm the result looks right, then test with a different input."
+    ],
+    "hasPractice": false
   },
   {
     "formula": "SORT",
@@ -2254,7 +2739,17 @@
     "relatedFormulas": [
       "UNIQUE",
       "FILTER"
-    ]
+    ],
+    "whyUse": "Sorts a range or array and spills the sorted result into the sheet, without altering the original data. It's especially useful any time you'd otherwise do this calculation by hand, since the result updates automatically whenever your underlying data changes.",
+    "steps": [
+      "Identify the values or ranges you need for each argument.",
+      "Work out your array: The range or array of values.",
+      "Work out your sort_index (optional): Which column or row number to sort by.",
+      "Work out your sort_order (optional): 1 for ascending, -1 for descending.",
+      "Put it together following the syntax: =SORT(array, [sort_index], [sort_order], [by_col])",
+      "Enter the formula and confirm the result looks right, then test with a different input."
+    ],
+    "hasPractice": false
   },
   {
     "formula": "FILTER",
@@ -2298,7 +2793,17 @@
       "UNIQUE",
       "SORT",
       "INDEX"
-    ]
+    ],
+    "whyUse": "Returns only the rows of an array that meet a condition, spilling into adjacent cells. It's especially useful any time you'd otherwise do this calculation by hand, since the result updates automatically whenever your underlying data changes.",
+    "steps": [
+      "Identify the values or ranges you need for each argument.",
+      "Work out your array: The range or array of values.",
+      "Work out your include: The condition rows must meet to be included in the result.",
+      "Work out your if_empty (optional): What to show if nothing matches the condition.",
+      "Put it together following the syntax: =FILTER(array, include, [if_empty])",
+      "Enter the formula and confirm the result looks right, then test with a different input."
+    ],
+    "hasPractice": false
   },
   {
     "formula": "TRANSPOSE",
@@ -2329,7 +2834,15 @@
     ],
     "relatedFormulas": [
       "INDEX"
-    ]
+    ],
+    "whyUse": "Flips a range from rows to columns or vice versa. It's especially useful any time you'd otherwise do this calculation by hand, since the result updates automatically whenever your underlying data changes.",
+    "steps": [
+      "Identify the values or ranges you need for each argument.",
+      "Work out your array: The range or array of values.",
+      "Put it together following the syntax: =TRANSPOSE(array)",
+      "Enter the formula and confirm the result looks right, then test with a different input."
+    ],
+    "hasPractice": false
   },
   {
     "formula": "PMT",
@@ -2384,7 +2897,17 @@
       "PV",
       "RATE",
       "NPER"
-    ]
+    ],
+    "whyUse": "Calculates the periodic payment for a loan based on constant payments and a constant interest rate. It's especially useful any time you'd otherwise do this calculation by hand, since the result updates automatically whenever your underlying data changes.",
+    "steps": [
+      "Identify the values or ranges you need for each argument.",
+      "Work out your rate: The interest rate for one period.",
+      "Work out your nper: The total number of payment periods.",
+      "Work out your pv: The present value - what a series of payments is worth right now.",
+      "Put it together following the syntax: =PMT(rate, nper, pv, [fv], [type])",
+      "Enter the formula and confirm the result looks right, then test with a different input."
+    ],
+    "hasPractice": false
   },
   {
     "formula": "FV",
@@ -2437,7 +2960,17 @@
       "PV",
       "PMT",
       "RATE"
-    ]
+    ],
+    "whyUse": "Calculates the future value of an investment based on periodic, constant payments and a constant interest rate. It's especially useful any time you'd otherwise do this calculation by hand, since the result updates automatically whenever your underlying data changes.",
+    "steps": [
+      "Identify the values or ranges you need for each argument.",
+      "Work out your rate: The interest rate for one period.",
+      "Work out your nper: The total number of payment periods.",
+      "Work out your pmt: The fixed payment made each period.",
+      "Put it together following the syntax: =FV(rate, nper, pmt, [pv], [type])",
+      "Enter the formula and confirm the result looks right, then test with a different input."
+    ],
+    "hasPractice": false
   },
   {
     "formula": "PV",
@@ -2490,7 +3023,17 @@
       "FV",
       "PMT",
       "NPV"
-    ]
+    ],
+    "whyUse": "Calculates the present value of a future stream of payments, given a constant interest rate. It's especially useful any time you'd otherwise do this calculation by hand, since the result updates automatically whenever your underlying data changes.",
+    "steps": [
+      "Identify the values or ranges you need for each argument.",
+      "Work out your rate: The interest rate for one period.",
+      "Work out your nper: The total number of payment periods.",
+      "Work out your pmt: The fixed payment made each period.",
+      "Put it together following the syntax: =PV(rate, nper, pmt, [fv], [type])",
+      "Enter the formula and confirm the result looks right, then test with a different input."
+    ],
+    "hasPractice": false
   },
   {
     "formula": "RATE",
@@ -2548,7 +3091,17 @@
       "PMT",
       "NPER",
       "PV"
-    ]
+    ],
+    "whyUse": "Calculates the interest rate per period of a loan or investment. It's especially useful any time you'd otherwise do this calculation by hand, since the result updates automatically whenever your underlying data changes.",
+    "steps": [
+      "Identify the values or ranges you need for each argument.",
+      "Work out your nper: The total number of payment periods.",
+      "Work out your pmt: The fixed payment made each period.",
+      "Work out your pv: The present value - what a series of payments is worth right now.",
+      "Put it together following the syntax: =RATE(nper, pmt, pv, [fv], [type], [guess])",
+      "Enter the formula and confirm the result looks right, then test with a different input."
+    ],
+    "hasPractice": false
   },
   {
     "formula": "NPER",
@@ -2601,7 +3154,17 @@
       "PMT",
       "RATE",
       "PV"
-    ]
+    ],
+    "whyUse": "Calculates how many payment periods it takes to pay off a loan or reach a savings goal. It's especially useful any time you'd otherwise do this calculation by hand, since the result updates automatically whenever your underlying data changes.",
+    "steps": [
+      "Identify the values or ranges you need for each argument.",
+      "Work out your rate: The interest rate for one period.",
+      "Work out your pmt: The fixed payment made each period.",
+      "Work out your pv: The present value - what a series of payments is worth right now.",
+      "Put it together following the syntax: =NPER(rate, pmt, pv, [fv], [type])",
+      "Enter the formula and confirm the result looks right, then test with a different input."
+    ],
+    "hasPractice": false
   },
   {
     "formula": "TEXT",
@@ -2638,7 +3201,16 @@
     "relatedFormulas": [
       "VALUE",
       "DATE"
-    ]
+    ],
+    "whyUse": "Converts a number or date into text, displayed in a specific format. It's especially useful any time you'd otherwise do this calculation by hand, since the result updates automatically whenever your underlying data changes.",
+    "steps": [
+      "Identify the values or ranges you need for each argument.",
+      "Work out your value: The value to evaluate.",
+      "Work out your format_text: A format code describing how the result should look, e.g. \"mmmm d, yyyy\".",
+      "Put it together following the syntax: =TEXT(value, format_text)",
+      "Enter the formula and confirm the result looks right, then test with a different input."
+    ],
+    "hasPractice": false
   },
   {
     "formula": "VALUE",
@@ -2670,7 +3242,15 @@
     "relatedFormulas": [
       "TEXT",
       "NUMBERVALUE"
-    ]
+    ],
+    "whyUse": "Converts a text string that looks like a number into an actual number. It's especially useful any time you'd otherwise do this calculation by hand, since the result updates automatically whenever your underlying data changes.",
+    "steps": [
+      "Identify the values or ranges you need for each argument.",
+      "Work out your text: The text string to work with.",
+      "Put it together following the syntax: =VALUE(text)",
+      "Enter the formula and confirm the result looks right, then test with a different input."
+    ],
+    "hasPractice": false
   },
   {
     "formula": "ISERROR",
@@ -2702,6 +3282,14 @@
     "relatedFormulas": [
       "IFERROR",
       "ISNA"
-    ]
+    ],
+    "whyUse": "Returns TRUE if a value or formula results in any error type. It's especially useful any time you'd otherwise do this calculation by hand, since the result updates automatically whenever your underlying data changes.",
+    "steps": [
+      "Identify the values or ranges you need for each argument.",
+      "Work out your value: The value to evaluate.",
+      "Put it together following the syntax: =ISERROR(value)",
+      "Enter the formula and confirm the result looks right, then test with a different input."
+    ],
+    "hasPractice": false
   }
 ]
