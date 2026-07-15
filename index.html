@@ -1,100 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learning and HR Help</title>
-    <meta name="description" content="A resource site for learning and HR help">
-    <meta property="og:title" content="Learning and HR Help">
-    <meta property="og:description" content="A resource site for learning and HR help">
-    <meta property="og:url" content="https://example.com">
-    <meta property="og:image" content="https://example.com/image.jpg">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 1em;
-            text-align: center;
-        }
-        nav {
-            background-color: #444;
-            padding: 1em;
-            text-align: center;
-        }
-        nav ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-        nav li {
-            display: inline-block;
-            margin-right: 20px;
-        }
-        nav a {
-            color: #fff;
-            text-decoration: none;
-        }
-        main {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 2em;
-        }
-        section {
-            background-color: #f7f7f7;
-            padding: 1em;
-            margin-bottom: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        footer {
-            background-color: #333;
-            color: #fff;
-            padding: 1em;
-            text-align: center;
-            clear: both;
-        }
-        @media only screen and (max-width: 768px) {
-            main {
-                flex-direction: column;
-            }
-            section {
-                margin-bottom: 10px;
-            }
-        }
-    </style>
+
+    <title>Excel & HR Learning Hub</title>
+
+    <meta name="description"
+        content="Learn Microsoft Excel, HR Operations, Automation, Dashboards and Business Productivity.">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-    <header>
-        <h1>Learning and HR Help</h1>
-    </header>
-    <nav>
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Learning</a></li>
-            <li><a href="#">HR Help</a></li>
-        </ul>
-    </nav>
-    <main>
-        <section>
-            <h2>Welcome to Learning and HR Help</h2>
-            <p>This is a resource site for learning and HR help.</p>
-        </section>
-        <section>
-            <h2>Learning</h2>
-            <p>Learn about various topics related to learning and development.</p>
-        </section>
-        <section>
-            <h2>HR Help</h2>
-            <p>Get help with HR-related topics such as recruitment, training, and employee development.</p>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2024 Learning and HR Help</p>
-    </footer>
+
+<div id="progressBar"></div>
+
+<!-- ===================== NAVBAR ===================== -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-success shadow sticky-top">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center fw-bold" href="index.html">
+            Excel & HR Learning Hub
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarMenu">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="excel.html">Excel</a></li>
+                <li class="nav-item"><a class="nav-link" href="hr.html">HR</a></li>
+                <li class="nav-item"><a class="nav-link" href="templates.html">Templates</a></li>
+                <li class="nav-item"><a class="nav-link" href="tutorials.html">Tutorials</a></li>
+                <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-7">
+                <span class="badge bg-warning text-dark mb-3 fs-6">🚀 Learn Faster</span>
+                <h1 class="display-4 fw-bold">Master Excel & HR Skills</h1>
+                <p class="lead mt-3">
+                    Learn Microsoft Excel, HR Operations, Dashboards, Automation and business
+                    productivity through practical tutorials and real-world examples.
+                </p>
+                <div class="mt-4">
+                    <a href="excel.html" class="btn btn-warning btn-lg me-2">Start Learning</a>
+                    <a href="templates.html" class="btn btn-outline-light btn-lg">Free Templates</a>
+                </div>
+
+                <div class="search-box mt-5">
+                    <input id="searchBox" type="text" placeholder="Search Excel Functions...">
+                    <button onclick="searchSite()"><i class="bi bi-search"></i></button>
+                </div>
+
+                <div class="stats mt-5">
+                    <div><h2>66+</h2><p>Functions</p></div>
+                    <div><h2>100+</h2><p>Templates</p></div>
+                    <div><h2>50+</h2><p>Tutorials</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== CATEGORIES ===================== -->
+<section class="container py-5">
+    <h2 class="text-center mb-5">Explore Learning Categories</h2>
+    <div class="row g-4">
+        <div class="col-md-4">
+            <a href="excel.html" class="text-decoration-none">
+                <div class="feature-card">
+                    <i class="bi bi-file-earmark-excel-fill display-3 text-success"></i>
+                    <h3 class="mt-3">Excel Functions</h3>
+                    <p>Search or browse every formula, from beginner to advanced.</p>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a href="hr.html" class="text-decoration-none">
+                <div class="feature-card">
+                    <i class="bi bi-people-fill display-3 text-primary"></i>
+                    <h3 class="mt-3">HR Resources</h3>
+                    <p>Recruitment, Payroll, Attendance & Compliance.</p>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a href="templates.html" class="text-decoration-none">
+                <div class="feature-card">
+                    <i class="bi bi-folder-fill display-3 text-info"></i>
+                    <h3 class="mt-3">Templates</h3>
+                    <p>Download ready-to-use Excel & HR templates.</p>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== POPULAR FUNCTIONS ===================== -->
+<section class="container py-5">
+    <h2 class="text-center mb-5">🔥 Popular Functions</h2>
+    <div class="row g-4" id="homePopularGrid">
+        <div class="col-md-3 col-6"><a href="excel.html#IF" class="text-decoration-none"><div class="formula-card"><h4>IF</h4><p>Logical tests</p></div></a></div>
+        <div class="col-md-3 col-6"><a href="excel.html#VLOOKUP" class="text-decoration-none"><div class="formula-card"><h4>VLOOKUP</h4><p>Vertical lookup</p></div></a></div>
+        <div class="col-md-3 col-6"><a href="excel.html#SUMIFS" class="text-decoration-none"><div class="formula-card"><h4>SUMIFS</h4><p>Conditional sum</p></div></a></div>
+        <div class="col-md-3 col-6"><a href="excel.html#XLOOKUP" class="text-decoration-none"><div class="formula-card"><h4>XLOOKUP</h4><p>Modern lookup</p></div></a></div>
+    </div>
+    <div class="text-center mt-4">
+        <a href="excel.html" class="btn btn-success">Browse All Functions →</a>
+    </div>
+</section>
+
+<!-- ===================== WHY US ===================== -->
+<section class="container py-5">
+    <div class="row text-center">
+        <div class="col-md-3"><h1>📘</h1><h4>Easy Tutorials</h4><p>Simple language with practical examples.</p></div>
+        <div class="col-md-3"><h1>💼</h1><h4>HR Examples</h4><p>Real workplace scenarios and use cases.</p></div>
+        <div class="col-md-3"><h1>📥</h1><h4>Free Downloads</h4><p>Practice workbooks and templates.</p></div>
+        <div class="col-md-3"><h1>🎯</h1><h4>Instant Search</h4><p>Every formula, one search box away.</p></div>
+    </div>
+</section>
+
+<!-- ===================== ABOUT ===================== -->
+<section class="bg-light py-5">
+    <div class="container text-center">
+        <h2 class="mb-4">Welcome to Excel & HR Learning Hub</h2>
+        <p class="lead">
+            Our mission is to simplify Microsoft Excel and HR learning through practical
+            examples, downloadable templates, and business-oriented tutorials.
+        </p>
+    </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="text-white pt-5 pb-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h4>Excel & HR Learning Hub</h4>
+                <p>Helping professionals master Excel, HR, Automation, and Dashboards.</p>
+            </div>
+            <div class="col-md-4">
+                <h4>Quick Links</h4>
+                <ul class="list-unstyled">
+                    <li><a href="index.html" class="text-white">Home</a></li>
+                    <li><a href="excel.html" class="text-white">Excel</a></li>
+                    <li><a href="about.html" class="text-white">About</a></li>
+                    <li><a href="contact.html" class="text-white">Contact</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h4>Follow Us</h4>
+                <p><i class="bi bi-linkedin"></i> LinkedIn</p>
+                <p><i class="bi bi-github"></i> GitHub</p>
+            </div>
+        </div>
+        <hr>
+        <p class="text-center mb-0">© <span id="year"></span> Excel & HR Learning Hub. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<button id="topBtn" title="Back to top">↑</button>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/script.js"></script>
+
 </body>
 </html>
