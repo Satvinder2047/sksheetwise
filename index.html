@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SheetWise | HR Blueprints & Excel Mastery</title>
-    <!-- Linking your custom stylesheet -->
     <link rel="stylesheet" href="css/style.css">
     <style>
         /* Temporary layout rules until your style.css is fully coded */
@@ -17,10 +16,16 @@
         .content-area { flex: 3; }
         .sidebar { flex: 1; background: #f1f5f9; padding: 20px; border-radius: 8px; min-height: 400px; }
         .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
-        .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border-top: 4px solid #3b82f6; }
+        /* Style modification to support 3 cards dynamically on large screens if desired */
+        .formula-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-top: 20px; }
+        .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border-top: 4px solid #3b82f6; display: flex; flex-direction: column; }
+        .card-excel { border-top-color: #198754; } /* Custom green accents for Excel links */
         .ad-placeholder { background: #e2e8f0; border: 2px dashed #94a3b8; color: #64748b; padding: 20px; text-align: center; font-weight: bold; border-radius: 6px; margin: 20px 0; }
-        .btn { display: inline-block; background: #2563eb; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; margin-top: 10px; }
+        .btn { display: inline-block; background: #2563eb; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; margin-top: auto; font-weight: bold; text-align: center; }
         .btn:hover { background: #1d4ed8; }
+        .badge { display: inline-block; padding: 4px 8px; font-size: 11px; font-weight: bold; border-radius: 4px; margin-bottom: 10px; width: fit-content; }
+        .badge-math { background-color: #d1fae5; color: #065f46; }
+        .badge-lookup { background-color: #dbeafe; color: #1e40af; }
     </style>
 </head>
 <body>
@@ -41,29 +46,34 @@
 
 <div class="main-container">
     <main class="content-area">
-        <!-- Top Ad Income Block -->
         <div class="ad-placeholder">[ DISPLAY AD: RESPONSIVE TOP BANNER ]</div>
 
-        <h2>Welcome to the Resource Central</h2>
+        <h2>Most Requested Formula Tutorials</h2>
         <p>Select a specialized track below to access high-quality templates, automated tracking calculators, and deployment guides.</p>
 
-        <div class="grid">
-            <!-- Excel Platform Card -->
-            <div class="card">
-                <h3>📈 Advanced Excel Workflows</h3>
-                <p>Master complex analytics, logic arrays, and formatting frameworks. Learn formulas built for clean data management.</p>
-                <a href="excel.html" class="btn">Explore Formulas</a>
+        <div class="formula-grid">
+            <div class="card card-excel">
+                <span class="badge badge-math">Math / Advanced</span>
+                <h3>SUMIFS</h3>
+                <p>Learn how to sum values over multiple columns or distinct operations sheets.</p>
+                <a href="formulas/sumifs.html" class="btn">View Tutorial ➔</a>
             </div>
 
-            <!-- HR Platform Card -->
-            <div class="card">
-                <h3>📋 HR Policy & Toolkit Library</h3>
-                <p>Download structured compliance letters, standardized forms, and operational onboarding documentation blueprints.</p>
-                <a href="hr.html" class="btn">Browse Blueprints</a>
+            <div class="card card-excel">
+                <span class="badge badge-lookup">Lookup / Advanced</span>
+                <h3>XLOOKUP</h3>
+                <p>The ultimate tool to replace VLOOKUP forever. Search left, right, and down easily.</p>
+                <a href="formulas/xlookup.html" class="btn">View Tutorial ➔</a>
+            </div>
+
+            <div class="card card-excel">
+                <span class="badge badge-lookup">Lookup / Intermediate</span>
+                <h3>VLOOKUP</h3>
+                <p>Master pulling active employee profiles and roster rows using dynamic indexes.</p>
+                <a href="formulas/vlookup.html" class="btn">View Tutorial ➔</a>
             </div>
         </div>
 
-        <!-- Middle Content Ad Income Block -->
         <div class="ad-placeholder">[ DISPLAY AD: HIGH-CTR NATIVE ROW ]</div>
     </main>
 
@@ -79,7 +89,6 @@
     </aside>
 </div>
 
-<!-- Linking your custom automation script -->
 <script src="js/script.js"></script>
 </body>
 </html>
